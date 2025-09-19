@@ -13,7 +13,7 @@
 
        working-storage section.
 
-       01  ws-test-string-1    pic x(30) value "    hello world       ".
+       01  ws-test-string-1    pic x(30) value "    hello Devin       ".
 
        01  ws-test-string-2    pic x(30).
 

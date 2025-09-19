@@ -35,6 +35,22 @@ Example:
 
 ```trim.cbl``` demonstrates a couple of examples of using the ```trim``` function.
 
+## Java Migration
+
+This directory also contains ```TrimFunctionTest.java```, which is a Java equivalent of the COBOL trim functionality. The Java version demonstrates the same string trimming operations using Java's built-in String methods:
+
+- ```trim()``` - equivalent to COBOL's ```function trim(string)```
+- ```stripLeading()``` - equivalent to COBOL's ```function trim(string leading)```
+- ```stripTrailing()``` - equivalent to COBOL's ```function trim(string trailing)```
+
+To compile and run the Java version:
+```bash
+javac TrimFunctionTest.java
+java TrimFunctionTest
+```
+
+Both programs produce identical output, demonstrating the equivalence between COBOL and Java string trimming functionality.
+
 
 **Example of program output:**
 
