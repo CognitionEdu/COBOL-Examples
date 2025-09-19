@@ -1,6 +1,6 @@
 public class TrimFunctionTest {
     public static void main(String[] args) {
-        String testString1 = "    hello world               ";
+        String testString1 = "    hello Devin               ";
         
         System.out.println("--" + testString1 + "--");
         System.out.println("--" + testString1.trim() + "--");
