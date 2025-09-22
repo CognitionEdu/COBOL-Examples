@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: trim-api
+
+logging:
+  level:
+    com.cobol.examples.trim: INFO
+    org.springframework.web: INFO

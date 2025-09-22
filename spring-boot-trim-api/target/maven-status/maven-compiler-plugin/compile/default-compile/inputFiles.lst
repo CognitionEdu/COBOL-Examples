@@ -1,0 +1,5 @@
+/home/ubuntu/repos/COBOL-Examples/spring-boot-trim-api/src/main/java/com/cobol/examples/trim/service/TrimService.java
+/home/ubuntu/repos/COBOL-Examples/spring-boot-trim-api/src/main/java/com/cobol/examples/trim/dto/TrimRequest.java
+/home/ubuntu/repos/COBOL-Examples/spring-boot-trim-api/src/main/java/com/cobol/examples/trim/controller/TrimController.java
+/home/ubuntu/repos/COBOL-Examples/spring-boot-trim-api/src/main/java/com/cobol/examples/trim/dto/TrimResponse.java
+/home/ubuntu/repos/COBOL-Examples/spring-boot-trim-api/src/main/java/com/cobol/examples/trim/TrimApiApplication.java
