@@ -1,0 +1,4 @@
+com/example/trimservice/TrimServiceApplication.class
+com/example/trimservice/model/TrimResult.class
+com/example/trimservice/service/TrimService.class
+com/example/trimservice/controller/TrimController.class
