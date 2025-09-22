@@ -1,7 +1,7 @@
 # Intrinsic TRIM Function Example
 
-The intrinsic ```TRIM``` function trims spaces from the string passed as a parameter. By default, it will trim 
-both leading and trailing spaces. You can specify to only trim the leading or trailing spaces by also 
+The intrinsic ```TRIM``` function trims spaces from the string passed as a parameter. By default, it will trim
+both leading and trailing spaces. You can specify to only trim the leading or trailing spaces by also
 passing ```leading``` or ```trailing``` as a parameter.
 
 
@@ -18,16 +18,16 @@ Examples:
 
 
 
-If you do not want to have to type ```function``` every time use an intrinsic function, you can add ```function all instrinsic``` 
-to your ```repository``` paragraph in the ```configuration section```. 
+If you do not want to have to type ```function``` every time use an intrinsic function, you can add ```function all instrinsic```
+to your ```repository``` paragraph in the ```configuration section```.
 
 Example:
 ```
-       environment division. 
-       
+       environment division.
+
        configuration section.
        repository.
-           function all intrinsic.      
+           function all intrinsic.
 ```
 
 
@@ -71,27 +71,39 @@ The test suite includes:
 - **Program execution**: Ensures both programs compile/run successfully
 - **Function validation**: Tests individual Python trim functions
 
+### Code Quality
+The Python code follows industry-standard quality practices:
+
+- **Black formatting**: Consistent code style and formatting
+- **Type hints**: Full type annotations for better IDE support and maintainability
+- **Flake8 compliance**: PEP 8 style guide adherence
+- **Pre-commit hooks**: Automated quality checks on every commit
+
+```bash
+# Run code quality checks
+black --check trim.py test_trim_migration.py
+flake8 trim.py test_trim_migration.py
+mypy trim.py test_trim_migration.py
+```
+
 **Example of program output:**
 
 ```
---    hello world               --                                                                                                       
+--    hello world               --
 --hello world--
 --hello world               --
 --    hello world--
 ******************************
-    hello world               
+    hello world
 ******************************
-hello world                   
+hello world
 ******************************
-hello world                   
+hello world
 ******************************
-    hello world               
+    hello world
 --    String literal    --
 --String literal--
 --String literal   --
 --   String literal--
 
 ```
-
-
-

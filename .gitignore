@@ -1,2 +1,13 @@
 **/bin
 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.mypy_cache/
+.coverage
+*.egg-info/
+dist/
+build/
