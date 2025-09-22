@@ -157,5 +157,131 @@ def test_trim_functions_exist() -> None:
             sys.path.remove(os.path.dirname(__file__))
 
 
+def test_main_function_execution() -> None:
+    """Test that the main function executes without errors.
+
+    This test ensures the main() function can be called directly and
+    produces the expected output format, improving code coverage.
+    """
+    import sys
+    from io import StringIO
+
+    sys.path.insert(0, os.path.dirname(__file__))
+
+    try:
+        import trim
+
+        captured_output = StringIO()
+        original_stdout = sys.stdout
+        sys.stdout = captured_output
+
+        trim.main()
+
+        sys.stdout = original_stdout
+        output = captured_output.getvalue()
+
+        lines = output.strip().split("\n")
+        assert (
+            len(lines) >= 10
+        ), "Main function should produce multiple output lines"
+
+        assert lines[0].startswith("--"), "First line should start with '--'"
+        assert lines[0].endswith("--"), "First line should end with '--'"
+        assert any(
+            "*" in line for line in lines
+        ), "Output should contain asterisk lines"
+        assert any(
+            "String literal" in line for line in lines
+        ), "Output should contain string literal examples"
+
+    finally:
+        if os.path.dirname(__file__) in sys.path:
+            sys.path.remove(os.path.dirname(__file__))
+
+
+def test_module_execution_path() -> None:
+    """Test the if __name__ == '__main__' execution path.
+
+    This test verifies that the module can be executed as a script
+    and produces the expected output, achieving 100% code coverage.
+    """
+    import subprocess
+
+    result = subprocess.run(
+        ["python3", "trim.py"],
+        capture_output=True,
+        text=True,
+        cwd=os.path.dirname(__file__),
+    )
+
+    assert result.returncode == 0, f"Module execution failed: {result.stderr}"
+    assert (
+        len(result.stdout.strip()) > 0
+    ), "Module execution should produce output"
+
+    lines = result.stdout.strip().split("\n")
+    assert (
+        len(lines) >= 10
+    ), "Module execution should produce multiple output lines"
+
+    assert lines[0].startswith("--"), "First line should start with '--'"
+    assert lines[0].endswith("--"), "First line should end with '--'"
+    assert any(
+        "*" in line for line in lines
+    ), "Output should contain asterisk lines"
+    assert any(
+        "String literal" in line for line in lines
+    ), "Output should contain string literal examples"
+
+
+def test_name_main_guard_coverage() -> None:
+    """Test the __name__ == '__main__' guard for 100% coverage.
+
+    This test specifically covers the if __name__ == '__main__' execution
+    path to achieve complete code coverage of trim.py.
+    """
+    import importlib.util
+    import sys
+    from io import StringIO
+
+    # Load the trim module from file to simulate script execution
+    spec = importlib.util.spec_from_file_location(
+        "__main__", os.path.join(os.path.dirname(__file__), "trim.py")
+    )
+    assert spec is not None, "Failed to create module spec"
+    assert spec.loader is not None, "Module spec has no loader"
+
+    trim_module = importlib.util.module_from_spec(spec)
+
+    captured_output = StringIO()
+    original_stdout = sys.stdout
+    sys.stdout = captured_output
+
+    try:
+        spec.loader.exec_module(trim_module)
+
+        sys.stdout = original_stdout
+        output = captured_output.getvalue()
+
+        lines = output.strip().split("\n")
+        assert (
+            len(lines) >= 10
+        ), "Main execution should produce multiple output lines"
+        assert lines[0].startswith("--"), "First line should start with '--'"
+        assert lines[0].endswith("--"), "First line should end with '--'"
+        assert any(
+            "*" in line for line in lines
+        ), "Output should contain asterisk lines"
+        assert any(
+            "String literal" in line for line in lines
+        ), "Output should contain string literal examples"
+
+        assert "--    hello world               --" in lines[0]
+        assert "--hello world--" in lines[1]
+
+    finally:
+        sys.stdout = original_stdout
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
