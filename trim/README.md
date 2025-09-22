@@ -55,6 +55,22 @@ python3 trim.py
 ### Migration Notes
 The Python version uses standard string methods (```strip()```, ```lstrip()```, ```rstrip()```) to replicate COBOL's intrinsic trim functions and maintains the exact output format including fixed-width string handling equivalent to COBOL PIC X(30).
 
+### Testing
+The migration includes comprehensive pytest tests to verify output matching:
+
+```bash
+# Install pytest (if not already installed)
+pip3 install pytest
+
+# Run tests
+python3 -m pytest test_trim_migration.py -v
+```
+
+The test suite includes:
+- **Output verification**: Compares COBOL and Python outputs character-by-character
+- **Program execution**: Ensures both programs compile/run successfully
+- **Function validation**: Tests individual Python trim functions
+
 **Example of program output:**
 
 ```
