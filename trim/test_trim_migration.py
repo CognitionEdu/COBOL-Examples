@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
-"""
-Pytest tests to verify COBOL and Python trim programs produce identical output.
+"""Pytest tests to verify COBOL and Python trim programs produce identical
+output.
+
+This module contains comprehensive tests to ensure that the Python migration
+of the COBOL trim example produces exactly the same output as the original
+COBOL program, including character-by-character verification.
 """
 
 import os
@@ -10,7 +14,14 @@ import pytest
 
 
 def run_cobol_program() -> str:
-    """Compile and run the COBOL trim program, return its output."""
+    """Compile and run the COBOL trim program, return its output.
+
+    Returns:
+        The stdout output from running the COBOL program.
+
+    Raises:
+        pytest.fail: If compilation or execution fails.
+    """
     compile_result = subprocess.run(
         ["cobc", "-x", "trim.cbl", "-o", "trim_test"],
         capture_output=True,
@@ -41,7 +52,14 @@ def run_cobol_program() -> str:
 
 
 def run_python_program() -> str:
-    """Run the Python trim program, return its output."""
+    """Run the Python trim program, return its output.
+
+    Returns:
+        The stdout output from running the Python program.
+
+    Raises:
+        pytest.fail: If execution fails.
+    """
     run_result = subprocess.run(
         ["python3", "trim.py"],
         capture_output=True,
@@ -56,7 +74,12 @@ def run_python_program() -> str:
 
 
 def test_cobol_python_output_match() -> None:
-    """Test that COBOL and Python programs produce identical output."""
+    """Test that COBOL and Python programs produce identical output.
+
+    This test compares the complete output of both programs line by line
+    to ensure perfect compatibility between the COBOL original and Python
+    migration.
+    """
     cobol_output = run_cobol_program()
     python_output = run_python_program()
 
@@ -81,21 +104,33 @@ def test_cobol_python_output_match() -> None:
 
 
 def test_cobol_program_runs() -> None:
-    """Test that the COBOL program compiles and runs successfully."""
+    """Test that the COBOL program compiles and runs successfully.
+
+    Verifies that the original COBOL program can be compiled and executed
+    without errors and produces non-empty output.
+    """
     output = run_cobol_program()
     assert output is not None
     assert len(output.strip()) > 0, "COBOL program should produce output"
 
 
 def test_python_program_runs() -> None:
-    """Test that the Python program runs successfully."""
+    """Test that the Python program runs successfully.
+
+    Verifies that the Python migration can be executed without errors
+    and produces non-empty output.
+    """
     output = run_python_program()
     assert output is not None
     assert len(output.strip()) > 0, "Python program should produce output"
 
 
 def test_trim_functions_exist() -> None:
-    """Test that the Python trim functions are properly defined."""
+    """Test that the Python trim functions are properly defined.
+
+    Verifies that all required trim functions exist and work correctly
+    with sample input data, ensuring the API matches expectations.
+    """
     import sys
 
     sys.path.insert(0, os.path.dirname(__file__))

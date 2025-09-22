@@ -76,14 +76,28 @@ The Python code follows industry-standard quality practices:
 
 - **Black formatting**: Consistent code style and formatting
 - **Type hints**: Full type annotations for better IDE support and maintainability
-- **Flake8 compliance**: PEP 8 style guide adherence
+- **Flake8 compliance**: PEP 8 style guide adherence with complexity checking
+- **Pydocstyle**: Google-style docstring compliance
+- **Bandit**: Security vulnerability scanning
+- **Vulture**: Dead code detection
+- **Safety**: Dependency security scanning
+- **MyPy strict mode**: Enhanced static type checking
 - **Pre-commit hooks**: Automated quality checks on every commit
+- **Coverage reporting**: Test coverage analysis with pytest-cov
 
 ```bash
-# Run code quality checks
+# Run comprehensive code quality checks
 black --check trim.py test_trim_migration.py
 flake8 trim.py test_trim_migration.py
-mypy trim.py test_trim_migration.py
+mypy --strict trim.py test_trim_migration.py
+pydocstyle trim.py test_trim_migration.py
+bandit -r trim/
+vulture trim/
+safety check
+python3 -m pytest test_trim_migration.py --cov=trim --cov-report=html
+
+# Run all pre-commit hooks
+pre-commit run --all-files
 ```
 
 **Example of program output:**

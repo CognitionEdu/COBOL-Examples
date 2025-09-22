@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
-"""
-Python migration of trim.cbl
+"""Python migration of trim.cbl.
+
+This module provides a Python implementation of COBOL's trim functionality,
+demonstrating string trimming operations equivalent to COBOL's intrinsic
+trim function.
+
 Author: Devin AI (migrated from Erik Eriksen's COBOL example)
 Purpose: Demonstrate string trimming operations equivalent to COBOL's intrinsic
 trim function
@@ -8,22 +12,54 @@ trim function
 
 
 def trim_leading(s: str) -> str:
-    """Equivalent to COBOL's TRIM(string LEADING)"""
+    """Remove leading whitespace from string.
+
+    Equivalent to COBOL's TRIM(string LEADING).
+
+    Args:
+        s: Input string to trim.
+
+    Returns:
+        String with leading whitespace removed.
+    """
     return s.lstrip()
 
 
 def trim_trailing(s: str) -> str:
-    """Equivalent to COBOL's TRIM(string TRAILING)"""
+    """Remove trailing whitespace from string.
+
+    Equivalent to COBOL's TRIM(string TRAILING).
+
+    Args:
+        s: Input string to trim.
+
+    Returns:
+        String with trailing whitespace removed.
+    """
     return s.rstrip()
 
 
 def trim_both(s: str) -> str:
-    """Equivalent to COBOL's TRIM(string)"""
+    """Remove leading and trailing whitespace from string.
+
+    Equivalent to COBOL's TRIM(string).
+
+    Args:
+        s: Input string to trim.
+
+    Returns:
+        String with leading and trailing whitespace removed.
+    """
     return s.strip()
 
 
 def main() -> None:
-    """Main function demonstrating COBOL trim functionality in Python."""
+    """Main function demonstrating COBOL trim functionality in Python.
+
+    This function replicates the exact behavior and output format of the
+    original COBOL trim.cbl program, including fixed-width string handling
+    using ljust(30) to match COBOL's PIC X(30) behavior.
+    """
     ws_test_string_1 = "    hello world       ".ljust(30)
 
     ws_test_string_2 = " " * 30

@@ -8,6 +8,54 @@ line_length = 79
 
 [tool.mypy]
 python_version = "3.8"
+strict = true
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true
+disallow_any_generics = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+ignore_missing_imports = true
+
+[tool.pydocstyle]
+convention = "google"
+add-ignore = ["D100", "D104"]
+
+[tool.bandit]
+exclude_dirs = ["tests"]
+skips = ["B101", "B404", "B603", "B607"]
+
+[tool.vulture]
+min_confidence = 80
+paths = ["trim"]
+
+[tool.coverage.run]
+source = ["trim"]
+omit = ["*/test_*.py"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+]
+show_missing = true
+skip_covered = false
+
+[tool.pytest.ini_options]
+testpaths = ["trim"]
+python_files = ["test_*.py"]
+addopts = "--cov=trim --cov-report=term-missing --cov-report=html"
