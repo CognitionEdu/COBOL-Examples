@@ -1,0 +1,5 @@
+com/cobol/examples/trim/service/TrimService.class
+com/cobol/examples/trim/dto/TrimResponse.class
+com/cobol/examples/trim/controller/TrimController.class
+com/cobol/examples/trim/TrimApiApplication.class
+com/cobol/examples/trim/dto/TrimRequest.class
