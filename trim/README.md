@@ -35,6 +35,25 @@ Example:
 
 ```trim.cbl``` demonstrates a couple of examples of using the ```trim``` function.
 
+## Python Migration
+
+This directory also contains ```trim.py```, a Python migration that replicates the exact functionality and output of the COBOL program.
+
+### Running the Programs
+
+**COBOL Version:**
+```bash
+cobc -x trim.cbl -o trim_test
+./trim_test
+```
+
+**Python Version:**
+```bash
+python3 trim.py
+```
+
+### Migration Notes
+The Python version uses standard string methods (```strip()```, ```lstrip()```, ```rstrip()```) to replicate COBOL's intrinsic trim functions and maintains the exact output format including fixed-width string handling equivalent to COBOL PIC X(30).
 
 **Example of program output:**
 
